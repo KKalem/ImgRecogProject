@@ -1,0 +1,9 @@
+tiny-imagenet-200
+*.zip
+*.tar
+*.pem
+*~
+*.pdf
+.pyc
+*.csv
+*.odt
