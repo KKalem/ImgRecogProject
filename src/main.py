@@ -29,7 +29,7 @@ X = []
 Y = []
 for i in range(num_classes):
 	label = label_names[i]
-	print 'label;',label,str(i)+'/'+str(num_classes)
+	print 'label;',label,str(i+1)+'/'+str(num_classes)
 	im_names = os.listdir(trainpath+label+'/images')
 	for s in range(num_samples):
 		im_name = im_names[s]
@@ -92,7 +92,8 @@ model = make_net(num_classes)
 #	model.save_weights('weights')
 
 for epoch in range(num_epochs):
-	print 'Epoch',str(epoch)+'/'+str(num_epochs)
+	print 'Epoch',str(epoch+1)+'/'+str(num_epochs)
+	start = time.time()
 	batches = 0
 	tloss, tacc = 0. , 0.
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
@@ -105,8 +106,12 @@ for epoch in range(num_epochs):
 	tloss = tloss/batches
 	tacc = tacc/batches
 	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
-	print 'loss:','{0:.3f}'.format(tloss),'acc;','{0:.3f}'.format(tacc),\
-		'val loss:','{0:.3f}'.format(vloss),'val acc;','{0:.3f}'.format(vacc)
+	end = time.time()
+	print '{0:.3f}s'.format(end-start),\
+		'loss:','{0:.4f}'.format(tloss),\
+		'acc;','{0:.4f}'.format(tacc),\
+		'val loss:','{0:.3f}'.format(vloss),\
+		'val acc;','{0:.4f}'.format(vacc)
 	if epoch >= save_every and epoch%save_every == 0:
 		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
 		+str(t.tm_hour)+'_e'+str(epoch)+'_weights.hdf5')
