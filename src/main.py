@@ -12,8 +12,8 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 100
-num_samples = 400
+num_classes = 50
+num_samples = 500
 num_epochs = 120
 num_batch = 32
 save_every = 20
@@ -24,11 +24,12 @@ label_encodings = np.eye(num_classes, dtype=np.int)
 label_map = dict(zip(label_names,label_encodings))
 
 #%% load the training images
+print 'Generating X_train'
 X = []
 Y = []
 for i in range(num_classes):
 	label = label_names[i]
-	print 'label;',label
+	print 'label;',label,str(i)+'/'+str(num_classes)
 	im_names = os.listdir(trainpath+label+'/images')
 	for s in range(num_samples):
 		im_name = im_names[s]
@@ -55,6 +56,7 @@ for labelname in labelnames:
 #encoding of filenames to class vectors
 val_label_map = dict(zip(filenames,val_label_encodings))
 #%% load the validation set images and label them
+print 'Generating X_val'
 X = []
 Y = []
 
@@ -83,6 +85,7 @@ datagen = ImageDataGenerator(
 	dim_ordering='tf')
 
 #%% create and train the model
+print 'Training'
 model = make_net(num_classes)
 #	history = model.fit(X_train, Y_train, verbose=2, validation_split=0.3, \
 #	nb_epoch=num_epochs)
