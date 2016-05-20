@@ -94,13 +94,18 @@ model = make_net(num_classes)
 for epoch in range(num_epochs):
 	print 'Epoch',str(epoch)+'/'+str(num_epochs)
 	batches = 0
+	tloss, tacc = 0. , 0.
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
 		loss, acc = model.train_on_batch(X_batch,Y_batch)
+		tloss += loss
+		tacc += acc
 		batches += 1
 		if batches >= len(X_train)/num_batch:
 			break
-	vloss, vacc = model.test_on_batch(X_val, Y_val)
-	print 'loss:','{0:.3f}'.format(loss),'acc;','{0:.3f}'.format(acc),\
+	tloss = tloss/batches
+	tacc = tacc/batches
+	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
+	print 'loss:','{0:.3f}'.format(tloss),'acc;','{0:.3f}'.format(tacc),\
 		'val loss:','{0:.3f}'.format(vloss),'val acc;','{0:.3f}'.format(vacc)
 	if epoch >= save_every and epoch%save_every == 0:
 		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
