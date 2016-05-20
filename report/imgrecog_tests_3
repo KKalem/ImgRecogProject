@@ -1,0 +1,110 @@
+test-1
+	model = 
+		convrelu(32,3)
+		convrelu(32,3)
+		dropout(0.25)
+		convrelu(64,3)
+		maxpool(2)
+		dropout(0.25)
+		convrelu(64,3)
+		maxpool(2)
+		dropout(0.25)
+		relu(128)
+		dropout(0.5)
+		softmax(100)
+	result = 
+		Epoch 1/30
+		209s - loss: 4.3241 - acc: 0.0199 - val_loss: 8.2991 - val_acc: 0.0000e+00
+		Epoch 2/30
+		209s - loss: 4.0675 - acc: 0.0468 - val_loss: 9.6999 - val_acc: 0.0000e+00
+		Epoch 3/30
+		209s - loss: 3.8778 - acc: 0.0734 - val_loss: 11.0683 - val_acc: 0.0000e+00
+		Epoch 4/30
+		209s - loss: 3.6656 - acc: 0.1123 - val_loss: 11.1869 - val_acc: 0.0000e+00
+		Epoch 5/30
+		209s - loss: 3.4900 - acc: 0.1426 - val_loss: 11.9088 - val_acc: 0.0000e+00
+		Epoch 6/30
+		209s - loss: 3.3347 - acc: 0.1743 - val_loss: 13.1632 - val_acc: 0.0000e+00
+		Epoch 7/30
+		209s - loss: 3.1987 - acc: 0.1982 - val_loss: 13.3918 - val_acc: 0.0000e+00
+		Epoch 8/30
+		209s - loss: 3.0766 - acc: 0.2244 - val_loss: 13.2511 - val_acc: 0.0000e+00
+		Epoch 9/30
+		209s - loss: 2.9681 - acc: 0.2452 - val_loss: 12.7024 - val_acc: 0.0000e+00
+		Epoch 10/30
+		209s - loss: 2.8767 - acc: 0.2626 - val_loss: 13.2522 - val_acc: 0.0000e+00
+		Epoch 11/30
+		209s - loss: 2.7889 - acc: 0.2820 - val_loss: 14.5001 - val_acc: 0.0000e+00
+		Epoch 12/30
+		209s - loss: 2.6943 - acc: 0.3012 - val_loss: 12.7316 - val_acc: 0.0000e+00
+		Epoch 13/30
+		209s - loss: 2.6191 - acc: 0.3173 - val_loss: 13.1277 - val_acc: 0.0000e+00
+		Epoch 14/30
+		209s - loss: 2.5343 - acc: 0.3378 - val_loss: 13.9075 - val_acc: 0.0000e+00
+		Epoch 15/30
+		209s - loss: 2.4658 - acc: 0.3542 - val_loss: 14.0357 - val_acc: 0.0000e+00
+		Epoch 16/30
+		209s - loss: 2.3955 - acc: 0.3650 - val_loss: 14.2308 - val_acc: 0.0000e+00
+		Epoch 17/30
+		209s - loss: 2.3316 - acc: 0.3804 - val_loss: 13.8051 - val_acc: 0.0000e+00
+		Epoch 18/30
+		209s - loss: 2.2891 - acc: 0.3881 - val_loss: 14.2849 - val_acc: 0.0000e+00
+		Epoch 19/30
+		209s - loss: 2.2265 - acc: 0.4045 - val_loss: 13.6743 - val_acc: 0.0000e+00
+		Epoch 20/30
+		209s - loss: 2.1936 - acc: 0.4124 - val_loss: 14.6890 - val_acc: 0.0000e+00
+		Epoch 21/30
+		209s - loss: 2.1616 - acc: 0.4185 - val_loss: 13.3987 - val_acc: 0.0000e+00
+		Epoch 22/30
+		209s - loss: 2.1352 - acc: 0.4277 - val_loss: 11.6244 - val_acc: 0.0000e+00
+		Epoch 23/30
+		209s - loss: 2.1057 - acc: 0.4342 - val_loss: 13.7381 - val_acc: 0.0000e+00
+		Epoch 24/30
+		209s - loss: 2.0898 - acc: 0.4409 - val_loss: 11.3059 - val_acc: 0.0000e+00
+		Epoch 25/30
+		209s - loss: 2.0627 - acc: 0.4454 - val_loss: 13.2775 - val_acc: 0.0000e+00
+		Epoch 26/30
+		209s - loss: 2.0456 - acc: 0.4513 - val_loss: 13.8127 - val_acc: 0.0000e+00
+		Epoch 27/30
+		209s - loss: 2.0404 - acc: 0.4529 - val_loss: 14.1761 - val_acc: 0.0000e+00
+		Epoch 28/30
+		209s - loss: 2.0424 - acc: 0.4534 - val_loss: 14.8865 - val_acc: 0.0000e+00
+		Epoch 29/30
+		209s - loss: 2.0504 - acc: 0.4538 - val_loss: 14.8885 - val_acc: 0.0000e+00
+		Epoch 30/30
+		208s - loss: 2.0258 - acc: 0.4605 - val_loss: 10.9326 - val_acc: 0.0000e+00
+
+(ADDED IMAGE AUGS FROM HERE ON)
+test-2
+	model = 
+		convrelu(32,3)
+		
+		convrelu(32,3)
+		dropout(0.25)
+		
+		convrelu(32,3)
+		maxpool(2)
+		dropout(0.25)
+		
+		relu(64)
+		dropout(0.5)
+		relu(64)
+		dropout(0.5)
+		softmax(100)
+		
+	result = 
+		179.043s loss: 15.9675 acc; 0.0087 val loss: 15.957 val acc; 0.0100
+		Epoch 2/120
+		178.409s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 3/120
+		178.450s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 4/120
+		178.557s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 5/120
+		178.544s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 6/120
+		178.517s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 7/120
+		178.586s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 8/120
+		178.591s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
