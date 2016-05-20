@@ -23,14 +23,18 @@ def make_net(num_classes):
 	model.add(Conv(32,3))
 	model.add(Dropout(0.25))
 
-	model.add(Conv(32,3))
+	model.add(Conv(64,3))
+	model.add(Maxpool(2))
+	model.add(Dropout(0.25))
+
+	model.add(Conv(64,3))
 	model.add(Maxpool(2))
 	model.add(Dropout(0.25))
 
 	model.add(Flatten())
-	model.add(Relu(64))
-	model.add(Dropout(0.5))
-	model.add(Relu(64))
+#	model.add(Relu(64))
+#	model.add(Dropout(0.5))
+	model.add(Relu(128))
 	model.add(Dropout(0.5))
 	model.add(Dense(num_classes, activation='softmax'))
 

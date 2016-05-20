@@ -12,7 +12,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 30
+num_classes = 100
 num_samples = 400
 num_epochs = 120
 num_batch = 32
