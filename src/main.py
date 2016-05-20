@@ -12,8 +12,8 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 10
-num_samples = 400
+num_classes = 30
+num_samples = 500
 num_epochs = 120
 num_batch = 32
 save_every = 20
@@ -96,12 +96,12 @@ for epoch in range(num_epochs):
 	batches = 0
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
 		loss, acc = model.train_on_batch(X_batch,Y_batch)
-		vloss, vacc = model.test_on_batch(X_val, Y_val)
-		print 'loss:','{0:.3f}'.format(loss),'acc;','{0:.3f}'.format(acc),\
-		'val loss:','{0:.3f}'.format(vloss),'val acc;','{0:.3f}'.format(vacc)
 		batches += 1
 		if batches >= len(X_train)/num_batch:
 			break
+	vloss, vacc = model.test_on_batch(X_val, Y_val)
+	print 'loss:','{0:.3f}'.format(loss),'acc;','{0:.3f}'.format(acc),\
+		'val loss:','{0:.3f}'.format(vloss),'val acc;','{0:.3f}'.format(vacc)
 	if epoch >= save_every and epoch%save_every == 0:
 		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
 		+str(t.tm_hour)+'_e'+str(epoch)+'_weights.hdf5')
