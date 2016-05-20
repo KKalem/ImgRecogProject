@@ -17,15 +17,11 @@ Relu = lambda size: Dense(size, activation='relu', init='glorot_normal')
 
 def make_net(num_classes):
 	model = Sequential()
-	model.add(Convolution2D(64, 3, 3, input_shape=(64,64,3),\
+	model.add(Convolution2D(32, 3, 3, input_shape=(64,64,3),\
 	dim_ordering = 'tf', border_mode = 'same', activation='relu'))
 
 	model.add(Conv(32,3))
 	model.add(Dropout(0.25))
-
-#	model.add(Conv(64,3))
-#	model.add(Maxpool(2))
-#	model.add(Dropout(0.25))
 
 	model.add(Conv(64,3))
 	model.add(Maxpool(2))
