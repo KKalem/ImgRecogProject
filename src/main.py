@@ -13,7 +13,7 @@ import time
 
 t = time.localtime()
 num_classes = 50
-num_samples = 500
+num_samples = 400
 num_epochs = 120
 num_batch = 32
 save_every = 20
