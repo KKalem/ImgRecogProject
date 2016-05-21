@@ -23,14 +23,12 @@ Relu = lambda size: Dense(size, activation='relu', init='glorot_normal')
 def make_net(num_classes):
 	model = Sequential()
 	model.add(ZeroPadding2D(dim_ordering='tf',input_shape=(64,64,3)))
-	model.add(Conv(64,3))
-
 	model.add(Convrelu(64,3))
-	model.add(Maxpool())
 
-	model.add(Conv(64,3))
+	model.add(Zeropad())
 	model.add(Convrelu(64,3))
-	model.add(Maxpool())
+	model.add(Convrelu(64,3))
+	model.add(Convrelu(64,3))
 
 	model.add(Flatten())
 	model.add(Relu(128))
