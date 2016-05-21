@@ -108,3 +108,96 @@ test-2
 		178.586s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
 		Epoch 8/120
 		178.591s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		
+test-3
+	model = 
+		convrelu(32,3)
+		
+		convrelu(32,3)
+		dropout(0.25)
+		
+		convrelu(64,3)
+		maxpool(2)
+		dropout(0.25)
+		
+		convrelu(64,3)
+		maxpool(2)
+		dropout(0.25)
+		
+		relu(128)
+		dropout(0.5)
+		softmax(100)
+	result = 
+		Epoch 1/120
+		275.504s loss: 15.9637 acc; 0.0092 val loss: 15.957 val acc; 0.0100
+		Epoch 2/120
+		274.928s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 3/120
+		275.013s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 4/120
+		274.852s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 5/120
+		275.027s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 6/120
+		274.972s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 7/120
+		275.000s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 8/120
+		275.030s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 9/120
+		274.565s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 10/120
+		274.253s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 11/120
+		274.296s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 12/120
+		274.361s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 13/120
+		274.422s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 14/120
+		274.364s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 15/120
+		274.425s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 16/120
+		274.513s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 17/120
+		274.372s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 18/120
+		274.399s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 19/120
+		274.406s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 20/120
+		274.374s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 21/120
+		274.306s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 22/120
+		274.341s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 23/120
+		274.447s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 24/120
+		274.477s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 25/120
+		274.436s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 26/120
+		274.380s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 27/120
+		274.399s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 28/120
+		274.418s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 29/120
+		274.360s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 30/120
+		274.381s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 31/120
+		274.376s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 32/120
+		274.405s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 33/120
+		274.332s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 34/120
+		274.412s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 35/120
+		274.355s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+		Epoch 36/120
+		274.316s loss: 15.9569 acc; 0.0100 val loss: 15.957 val acc; 0.0100
+

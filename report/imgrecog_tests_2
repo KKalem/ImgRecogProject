@@ -350,7 +350,7 @@ test-6
 		Epoch 30/30
 		221s - loss: 2.4028 - acc: 0.3732 - val_loss: 6.9787 - val_acc: 0.0000e+00
 
-test-5
+test-7
 	static image augmentations. for each image, randomly rotate/shift the images in the training
 	set to reduce overfitting
 	model = 
