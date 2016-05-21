@@ -77,9 +77,9 @@ del Y
 #%% generator to create rotated, shifted etc images for training
 datagen = ImageDataGenerator(
 	fill_mode='constant',
-	rotation_range=20,
-	width_shift_range=0.2,
-	height_shift_range=0.2,
+	rotation_range=5,
+	width_shift_range=0.1,
+	height_shift_range=0.1,
 	horizontal_flip=True,
 	dim_ordering='tf')
 

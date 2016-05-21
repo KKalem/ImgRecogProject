@@ -27,11 +27,10 @@ def make_net(num_classes):
 
 	model.add(Convrelu(64,3))
 	model.add(Maxpool())
-	model.add(Dropout(0.25))
 
-#	model.add(Convrelu(64,3))
-#	model.add(Maxpool())
-#	model.add(Dropout(0.25))
+	model.add(Conv(64,3))
+	model.add(Convrelu(64,3))
+	model.add(Maxpool())
 
 	model.add(Flatten())
 	model.add(Relu(128))
