@@ -10,7 +10,7 @@ from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2
 from keras.optimizers import SGD
 
 Convrelu = lambda num_filt,filt_size: Convolution2D(num_filt, filt_size, filt_size,\
-dim_ordering = 'tf', border_mode = 'same', init = 'glorot_normal')
+dim_ordering = 'tf', border_mode = 'valid', init = 'glorot_normal', activation='relu')
 
 Conv = lambda num_filt, filt_size: Convolution2D(num_filt, filt_size, filt_size,\
 dim_ordering = 'tf', border_mode = 'valid', init = 'glorot_normal')
@@ -26,16 +26,15 @@ def make_net(num_classes):
 	model.add(Conv(64,3))
 
 	model.add(Convrelu(64,3))
+	model.add(Maxpool())
 	model.add(Dropout(0.25))
 
-	model.add(Zeropad())
-	model.add(Conv(64,3))
-
-	model.add(Convrelu(64,3))
-	model.add(Dropout(0.25))
+#	model.add(Convrelu(64,3))
+#	model.add(Maxpool())
+#	model.add(Dropout(0.25))
 
 	model.add(Flatten())
-	model.add(Relu(256))
+	model.add(Relu(128))
 	model.add(Dropout(0.5))
 	model.add(Dense(num_classes, activation='softmax'))
 
