@@ -77,9 +77,9 @@ del Y
 #%% generator to create rotated, shifted etc images for training
 datagen = ImageDataGenerator(
 	fill_mode='constant',
-	rotation_range=5,
-	width_shift_range=0.1,
-	height_shift_range=0.1,
+	rotation_range=1,
+	width_shift_range=0.05,
+	height_shift_range=0.05,
 	horizontal_flip=True,
 	dim_ordering='tf')
 
@@ -107,10 +107,10 @@ for epoch in range(num_epochs):
 	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
 	end = time.time()
 	print '{0:.3f}s'.format(end-start),\
-		'loss:','{0:.4f}'.format(tloss),\
-		'acc;','{0:.4f}'.format(tacc),\
-		'val loss:','{0:.3f}'.format(vloss),\
-		'val acc;','{0:.4f}'.format(vacc)
+		'loss:','{0:.9f}'.format(tloss),\
+		'acc;','{0:.9f}'.format(tacc),\
+		'val loss:','{0:.9f}'.format(vloss),\
+		'val acc;','{0:.9f}'.format(vacc)
 	if epoch >= save_every and epoch%save_every == 0:
 		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
 		+str(t.tm_hour)+'_e'+str(epoch)+'_weights.hdf5')
