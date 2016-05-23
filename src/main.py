@@ -112,7 +112,8 @@ for epoch in range(num_epochs):
 	tloss = tloss/batches
 	tacc = tacc/batches
 #	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
-	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch, verbose=0))
+	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
+	val_samples = len(X_val), verbose=0)
 	end = time.time()
 	print '{0:.3f}s'.format(end-start),\
 		'loss:','{0:.9f}'.format(tloss),\
