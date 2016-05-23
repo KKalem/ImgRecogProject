@@ -87,6 +87,7 @@ datagen = ImageDataGenerator(
 	horizontal_flip=False,
 	dim_ordering='tf')
 
+print 'fitting datagen'
 datagen.fit(X_val)
 #%% create and train the model
 print 'Training'
