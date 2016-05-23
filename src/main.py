@@ -78,7 +78,7 @@ del Y
 datagen = ImageDataGenerator(
 	featurewise_center = True,
 	featurewise_std_normalization = True,
-	zca_whitening = True,
+	zca_whitening = False,
 	fill_mode='constant',
 	cval=0,
 	rotation_range=0,
@@ -87,8 +87,9 @@ datagen = ImageDataGenerator(
 	horizontal_flip=False,
 	dim_ordering='tf')
 
+
 print 'fitting datagen'
-datagen.fit(X_val)
+datagen.fit(X_train)
 #%% create and train the model
 print 'Training'
 model = make_net(num_classes)
@@ -110,7 +111,8 @@ for epoch in range(num_epochs):
 			break
 	tloss = tloss/batches
 	tacc = tacc/batches
-	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
+#	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
+	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch, verbose=0))
 	end = time.time()
 	print '{0:.3f}s'.format(end-start),\
 		'loss:','{0:.9f}'.format(tloss),\
