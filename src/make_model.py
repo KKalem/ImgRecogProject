@@ -18,23 +18,23 @@ dim_ordering = 'tf', border_mode = 'valid', init = 'glorot_normal')
 Zeropad = lambda size=1: ZeroPadding2D(padding = (size,size), dim_ordering = 'tf')
 
 Maxpool = lambda size=2: MaxPooling2D((size,size), strides=(size,size))
+
 Relu = lambda size: Dense(size, activation='relu', init='glorot_normal')
 
 def make_net(num_classes):
 	model = Sequential()
 	model.add(ZeroPadding2D(padding = (2,2), dim_ordering='tf',input_shape=(64,64,3)))
-	model.add(Convrelu(32,5))
+	model.add(Convrelu(32,3))
+	model.add(Zeropad())
 	model.add(Convrelu(32,3))
 	model.add(Maxpool())
 	model.add(Dropout(0.25))
 
-	model.add(Zeropad())
-	model.add(Convrelu(64,3))
-	model.add(Convrelu(64,3))
-	model.add(Maxpool())
-	model.add(Dropout(0.25))
-
-
+#	model.add(Zeropad())
+#	model.add(Convrelu(64,3))
+#	model.add(Convrelu(64,3))
+#	model.add(Maxpool())
+#	model.add(Dropout(0.25))
 
 	model.add(Flatten())
 	model.add(Relu(128))

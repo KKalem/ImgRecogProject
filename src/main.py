@@ -12,10 +12,10 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 100
-num_samples = 400
+num_classes = 10
+num_samples = 500
 num_epochs = 120
-num_batch = 32
+num_batch = 128
 save_every = 20
 
 trainpath = '../tiny-imagenet-200/train/'
@@ -76,13 +76,18 @@ del X
 del Y
 #%% generator to create rotated, shifted etc images for training
 datagen = ImageDataGenerator(
+	featurewise_center = True,
+	featurewise_std_normalization = True,
+	zca_whitening = True,
 	fill_mode='constant',
-	rotation_range=1,
-	width_shift_range=0.05,
-	height_shift_range=0.05,
-	horizontal_flip=True,
+	cval=0,
+	rotation_range=0,
+	width_shift_range=0.,
+	height_shift_range=0.,
+	horizontal_flip=False,
 	dim_ordering='tf')
 
+datagen.fit(X_val)
 #%% create and train the model
 print 'Training'
 model = make_net(num_classes)
