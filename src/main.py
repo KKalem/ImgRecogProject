@@ -12,7 +12,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 10
+num_classes = 100
 num_samples = 500
 num_epochs = 120
 num_batch = 128
@@ -113,7 +113,7 @@ for epoch in range(num_epochs):
 	tacc = tacc/batches
 #	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
 	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
-	val_samples = len(X_val), verbose=0)
+	val_samples = len(X_val))
 	end = time.time()
 	print '{0:.3f}s'.format(end-start),\
 		'loss:','{0:.9f}'.format(tloss),\
