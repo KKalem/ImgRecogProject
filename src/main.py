@@ -110,8 +110,8 @@ for epoch in range(num_epochs):
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
 #		loss, acc = model.train_on_batch(X_batch,Y_batch)
 		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1)
-		loss = history['loss']
-		acc = history['acc']
+		loss = history.history['loss']
+		acc = history.history['acc']
 		tloss += loss
 		tacc += acc
 		batches += 1
