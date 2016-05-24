@@ -75,17 +75,17 @@ Y_val = np.array(Y)
 del X
 del Y
 #%% generator to create rotated, shifted etc images for training
-#datagen = ImageDataGenerator(
-##	featurewise_center = False,
-##	featurewise_std_normalization = False,
-##	zca_whitening = False,
-##	fill_mode='constant',
-##	cval=0,
-##	rotation_range=0,
-##	width_shift_range=0.,
-##	height_shift_range=0.,
-##	horizontal_flip=False,
-#	dim_ordering='tf')
+datagen = ImageDataGenerator(
+#	featurewise_center = False,
+#	featurewise_std_normalization = False,
+#	zca_whitening = False,
+#	fill_mode='constant',
+#	cval=0,
+#	rotation_range=0,
+#	width_shift_range=0.,
+#	height_shift_range=0.,
+#	horizontal_flip=False,
+	dim_ordering='tf')
 
 
 #print 'fitting datagen'
@@ -93,9 +93,13 @@ del Y
 #%% create and train the model
 print 'Training'
 model = make_net(num_classes)
-history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),\
-nb_epoch=num_epochs)
-model.save_weights('weights')
+#history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
+#nb_epoch=num_epochs)
+#model.save_weights('weights')
+
+model.fit_generator(datagen.flow(X_train, Y_train, batch_size=num_batch),
+					samples_per_epoch=len(X_train), nb_epoch=num_epochs,
+					validation_data=(X_val, Y_val))
 
 #for epoch in range(num_epochs):
 #	print 'Epoch',str(epoch+1)+'/'+str(num_epochs)
