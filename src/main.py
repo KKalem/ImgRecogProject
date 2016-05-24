@@ -12,10 +12,10 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 100
-num_samples = 400
+num_classes = 10
+num_samples = 500
 num_epochs = 120
-num_batch = 128
+num_batch = 64
 save_every = 20
 
 trainpath = '../tiny-imagenet-200/train/'
