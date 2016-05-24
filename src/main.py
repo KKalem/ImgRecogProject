@@ -76,20 +76,20 @@ del X
 del Y
 #%% generator to create rotated, shifted etc images for training
 datagen = ImageDataGenerator(
-	featurewise_center = True,
-	featurewise_std_normalization = True,
-	zca_whitening = False,
-	fill_mode='constant',
-	cval=0,
-	rotation_range=0,
-	width_shift_range=0.,
-	height_shift_range=0.,
-	horizontal_flip=False,
+#	featurewise_center = False,
+#	featurewise_std_normalization = False,
+#	zca_whitening = False,
+#	fill_mode='constant',
+#	cval=0,
+#	rotation_range=0,
+#	width_shift_range=0.,
+#	height_shift_range=0.,
+#	horizontal_flip=False,
 	dim_ordering='tf')
 
 
-print 'fitting datagen'
-datagen.fit(X_train)
+#print 'fitting datagen'
+#datagen.fit(X_train)
 #%% create and train the model
 print 'Training'
 model = make_net(num_classes)
