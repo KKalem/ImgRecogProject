@@ -12,7 +12,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 5
+num_classes = 100
 num_samples = 500
 num_epochs = 120
 num_batch = 32
@@ -96,7 +96,7 @@ model = make_net(num_classes)
 #%%
 history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
 nb_epoch=num_epochs, shuffle=True)
-model.save_weights('weightscifar')
+model.save_weights('weights')
 
 #model.fit_generator(datagen.flow(X_train, Y_train, batch_size=num_batch),
 #					samples_per_epoch=len(X_train), nb_epoch=num_epochs,

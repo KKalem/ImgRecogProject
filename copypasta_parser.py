@@ -6,46 +6,57 @@ Created on Sat May 21 13:51:04 2016
 """
 
 s = """
-Epoch 1/120
-I tensorflow/core/common_runtime/gpu/pool_allocator.cc:244] PoolAllocator: After 4392 get requests, put_count=4331 evicted_count=1000 eviction_rate=0.230894 and unsatisfied allocation rate=0.264344
-I tensorflow/core/common_runtime/gpu/pool_allocator.cc:256] Raising pool_size_limit_ from 100 to 110
-250/250 [==============================] - 0s
-23.401s loss; 1.623798361 acc; 0.196714744 val_loss; 1.612657193 val_acc; 0.200000000
+21s - loss: 1.6151 - acc: 0.2088 - val_loss: 1.6212 - val_acc: 0.2000
 Epoch 2/120
-250/250 [==============================] - 0s
-22.617s loss; 1.618067932 acc; 0.197115385 val_loss; 1.612050258 val_acc; 0.200000000
+20s - loss: 1.6200 - acc: 0.1924 - val_loss: 1.6131 - val_acc: 0.2000
 Epoch 3/120
-250/250 [==============================] - 0s
-22.446s loss; 1.618047121 acc; 0.190705128 val_loss; 1.614283461 val_acc; 0.200000000
+20s - loss: 1.6173 - acc: 0.1888 - val_loss: 1.6125 - val_acc: 0.2000
 Epoch 4/120
-250/250 [==============================] - 0s
-22.568s loss; 1.617090957 acc; 0.197115385 val_loss; 1.615766908 val_acc; 0.200000000
+20s - loss: 1.6147 - acc: 0.1964 - val_loss: 1.6143 - val_acc: 0.2000
 Epoch 5/120
-250/250 [==============================] - 0s
-22.570s loss; 1.614266267 acc; 0.208333333 val_loss; 1.610156164 val_acc; 0.200000000
+20s - loss: 1.6156 - acc: 0.1968 - val_loss: 1.6106 - val_acc: 0.2000
 Epoch 6/120
-250/250 [==============================] - 0s
-22.779s loss; 1.614304605 acc; 0.213942308 val_loss; 1.618192377 val_acc; 0.200000000
+20s - loss: 1.6141 - acc: 0.2048 - val_loss: 1.6112 - val_acc: 0.2000
 Epoch 7/120
-250/250 [==============================] - 0s
-22.830s loss; 1.615733163 acc; 0.202724359 val_loss; 1.614787613 val_acc; 0.200000001
+20s - loss: 1.6153 - acc: 0.1876 - val_loss: 1.6193 - val_acc: 0.2000
 Epoch 8/120
-250/250 [==============================] - 0s
-22.918s loss; 1.613916260 acc; 0.205528846 val_loss; 1.617527492 val_acc; 0.200000001
+20s - loss: 1.6193 - acc: 0.1896 - val_loss: 1.6100 - val_acc: 0.2000
 Epoch 9/120
-250/250 [==============================] - 0s
-22.791s loss; 1.616669045 acc; 0.199519231 val_loss; 1.615328062 val_acc; 0.200000000
+20s - loss: 1.6158 - acc: 0.2036 - val_loss: 1.6156 - val_acc: 0.2000
 Epoch 10/120
-250/250 [==============================] - 0s
-22.924s loss; 1.614657092 acc; 0.208333333 val_loss; 1.612100225 val_acc; 0.200000000
+21s - loss: 1.6164 - acc: 0.1940 - val_loss: 1.6145 - val_acc: 0.2000
 Epoch 11/120
-250/250 [==============================] - 0s
-22.864s loss; 1.614925088 acc; 0.194711538 val_loss; 1.614974635 val_acc; 0.200000000
+20s - loss: 1.6168 - acc: 0.1960 - val_loss: 1.6144 - val_acc: 0.2000
 Epoch 12/120
-250/250 [==============================] - 0s
-22.761s loss; 1.612979597 acc; 0.206330128 val_loss; 1.614891129 val_acc; 0.200000000
-
-
+20s - loss: 1.6145 - acc: 0.1972 - val_loss: 1.6144 - val_acc: 0.2000
+Epoch 13/120
+20s - loss: 1.6165 - acc: 0.1992 - val_loss: 1.6154 - val_acc: 0.2000
+Epoch 14/120
+21s - loss: 1.6168 - acc: 0.2008 - val_loss: 1.6208 - val_acc: 0.2000
+Epoch 15/120
+20s - loss: 1.6169 - acc: 0.1828 - val_loss: 1.6117 - val_acc: 0.2000
+Epoch 16/120
+20s - loss: 1.6165 - acc: 0.1924 - val_loss: 1.6157 - val_acc: 0.2000
+Epoch 17/120
+20s - loss: 1.6149 - acc: 0.1980 - val_loss: 1.6199 - val_acc: 0.2000
+Epoch 18/120
+20s - loss: 1.6169 - acc: 0.2012 - val_loss: 1.6148 - val_acc: 0.2000
+Epoch 19/120
+20s - loss: 1.6128 - acc: 0.2084 - val_loss: 1.6187 - val_acc: 0.2000
+Epoch 20/120
+20s - loss: 1.6152 - acc: 0.1956 - val_loss: 1.6163 - val_acc: 0.2000
+Epoch 21/120
+20s - loss: 1.6144 - acc: 0.1996 - val_loss: 1.6144 - val_acc: 0.2000
+Epoch 22/120
+20s - loss: 1.6177 - acc: 0.1952 - val_loss: 1.6162 - val_acc: 0.2000
+Epoch 23/120
+20s - loss: 1.6169 - acc: 0.1992 - val_loss: 1.6154 - val_acc: 0.2000
+Epoch 24/120
+20s - loss: 1.6149 - acc: 0.1996 - val_loss: 1.6130 - val_acc: 0.2000
+Epoch 25/120
+20s - loss: 1.6141 - acc: 0.1996 - val_loss: 1.6121 - val_acc: 0.2000
+Epoch 26/120
+21s - loss: 1.6141 - acc: 0.1976 - val_loss: 1.6147 - val_acc: 0.2000
 
 """
 #%%
@@ -58,11 +69,11 @@ accs = []
 val_losses=[]
 for i in range(1,len(tokens)):
 	prev = stokens[i-1]
-	if prev == 'loss;':
+	if prev == 'loss:':
 		losses.append(float(stokens[i]))
-	if prev == 'acc;':
+	if prev == 'acc:':
 		accs.append(float(stokens[i]))
-	if prev == 'val_loss;':
+	if prev == 'val_loss:':
 		val_losses.append(float(stokens[i]))
 
 
