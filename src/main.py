@@ -75,60 +75,60 @@ Y_val = np.array(Y)
 del X
 del Y
 #%% generator to create rotated, shifted etc images for training
-datagen = ImageDataGenerator(
-	featurewise_center = False,
-	featurewise_std_normalization = False,
-#	zca_whitening = False,
-#	fill_mode='constant',
-#	cval=0,
-#	rotation_range=5,
-	width_shift_range=0.1,
-	height_shift_range=0.1,
-	horizontal_flip=False,
-	dim_ordering='tf')
-
-
-print 'fitting datagen'
-datagen.fit(X_train)
+#datagen = ImageDataGenerator(
+#	featurewise_center = False,
+#	featurewise_std_normalization = False,
+##	zca_whitening = False,
+##	fill_mode='constant',
+##	cval=0,
+##	rotation_range=5,
+#	width_shift_range=0.1,
+#	height_shift_range=0.1,
+#	horizontal_flip=False,
+#	dim_ordering='tf')
+#
+#
+#print 'fitting datagen'
+#datagen.fit(X_train)
 #%% create and train the model
 print 'Training'
 model = make_net(num_classes)
 #%%
-#history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
-#nb_epoch=num_epochs)
-#model.save_weights('weights')
+history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
+nb_epoch=num_epochs, shuffle=True)
+model.save_weights('weightscifar')
 
 #model.fit_generator(datagen.flow(X_train, Y_train, batch_size=num_batch),
 #					samples_per_epoch=len(X_train), nb_epoch=num_epochs,
 #					validation_data=(X_val, Y_val))
 
-for epoch in range(num_epochs):
-	print 'Epoch',str(epoch+1)+'/'+str(num_epochs)
-	start = time.time()
-	batches = 0
-	tloss, tacc = 0. , 0.
-	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch, shuffle=True):
-#		print X_batch[0][0][0]
-		loss, acc = model.train_on_batch(X_batch,Y_batch)
-#		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1, verbose=0)
-#		loss = history.history['loss'][0]
-#		acc = history.history['acc'][0]
-		tloss += loss
-		tacc += acc
-		batches += 1
-		if batches >= len(X_train)/num_batch:
-			break
-	tloss = tloss/batches
-	tacc = tacc/batches
-	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=1)
-#	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
-#	val_samples = len(X_val))
-	end = time.time()
-	print '{0:.3f}s'.format(end-start),\
-		'loss;','{0:.9f}'.format(tloss),\
-		'acc;','{0:.9f}'.format(tacc),\
-		'val_loss;','{0:.9f}'.format(vloss),\
-		'val_acc;','{0:.9f}'.format(vacc)
-	if epoch >= save_every and epoch%save_every == 0:
-		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
-		+str(t.tm_hour)+'_e'+str(epoch)+'_weights.hdf5')
+#for epoch in range(num_epochs):
+#	print 'Epoch',str(epoch+1)+'/'+str(num_epochs)
+#	start = time.time()
+#	batches = 0
+#	tloss, tacc = 0. , 0.
+#	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch, shuffle=True):
+##		print X_batch[0][0][0]
+#		loss, acc = model.train_on_batch(X_batch,Y_batch)
+##		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1, verbose=0)
+##		loss = history.history['loss'][0]
+##		acc = history.history['acc'][0]
+#		tloss += loss
+#		tacc += acc
+#		batches += 1
+#		if batches >= len(X_train)/num_batch:
+#			break
+#	tloss = tloss/batches
+#	tacc = tacc/batches
+#	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=1)
+##	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
+##	val_samples = len(X_val))
+#	end = time.time()
+#	print '{0:.3f}s'.format(end-start),\
+#		'loss;','{0:.9f}'.format(tloss),\
+#		'acc;','{0:.9f}'.format(tacc),\
+#		'val_loss;','{0:.9f}'.format(vloss),\
+#		'val_acc;','{0:.9f}'.format(vacc)
+#	if epoch >= save_every and epoch%save_every == 0:
+#		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
+#		+str(t.tm_hour)+'_e'+str(epoch)+'_weights.hdf5')
