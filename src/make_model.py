@@ -25,19 +25,28 @@ def make_net(num_classes):
 	model = Sequential()
 	model.add(ZeroPadding2D(padding = (2,2), dim_ordering='tf',input_shape=(64,64,3)))
 
-	model.add(Convolution2D(32,3,3, init='glorot_uniform', activation='linear',\
+	model.add(Convolution2D(64,3,3, init='glorot_uniform', activation='linear',\
 	border_mode='valid',dim_ordering='tf'))
 
-	model.add(Convolution2D(32,3,3, init='glorot_normal', activation='relu',\
+	model.add(Convolution2D(64,3,3, init='glorot_normal', activation='relu',\
 	border_mode='same',dim_ordering='tf'))
 
-	model.add(Maxpool(5,2))
+	model.add(Maxpool())
+	model.add(Dropout(0.25))
+
+	model.add(Convolution2D(128,3,3, init='glorot_uniform', activation='linear',\
+	border_mode='valid',dim_ordering='tf'))
+
+	model.add(Convolution2D(128,3,3, init='glorot_normal', activation='relu',\
+	border_mode='same',dim_ordering='tf'))
+
+	model.add(Maxpool())
 	model.add(Dropout(0.25))
 
 	model.add(Flatten())
-	model.add(Relu(64))
+	model.add(Relu(128))
 	model.add(Dropout(0.5))
-	model.add(Relu(64))
+	model.add(Relu(128))
 	model.add(Dropout(0.5))
 	model.add(Dense(num_classes, activation='softmax'))
 

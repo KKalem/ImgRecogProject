@@ -12,8 +12,8 @@ from keras.preprocessing.image import ImageDataGenerator
 import time
 
 t = time.localtime()
-num_classes = 10
-num_samples = 500
+num_classes = 100
+num_samples = 400
 num_epochs = 120
 num_batch = 64
 save_every = 20
@@ -81,10 +81,10 @@ datagen = ImageDataGenerator(
 #	zca_whitening = False,
 #	fill_mode='constant',
 #	cval=0,
-#	rotation_range=0,
-#	width_shift_range=0.,
-#	height_shift_range=0.,
-#	horizontal_flip=False,
+#	rotation_range=5,
+	width_shift_range=0.1,
+	height_shift_range=0.1,
+	horizontal_flip=False,
 	dim_ordering='tf')
 
 
@@ -108,10 +108,11 @@ for epoch in range(num_epochs):
 	batches = 0
 	tloss, tacc = 0. , 0.
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
-#		loss, acc = model.train_on_batch(X_batch,Y_batch)
-		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1, verbose=0)
-		loss = history.history['loss'][0]
-		acc = history.history['acc'][0]
+		print X_batch[0][0][0]
+		loss, acc = model.train_on_batch(X_batch,Y_batch)
+#		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1, verbose=0)
+#		loss = history.history['loss'][0]
+#		acc = history.history['acc'][0]
 		tloss += loss
 		tacc += acc
 		batches += 1
@@ -119,14 +120,14 @@ for epoch in range(num_epochs):
 			break
 	tloss = tloss/batches
 	tacc = tacc/batches
-#	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
+	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
 	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
 	val_samples = len(X_val))
 	end = time.time()
 	print '{0:.3f}s'.format(end-start),\
-		'loss:','{0:.9f}'.format(tloss),\
+		'loss;','{0:.9f}'.format(tloss),\
 		'acc;','{0:.9f}'.format(tacc),\
-		'val_loss:','{0:.9f}'.format(vloss),\
+		'val_loss;','{0:.9f}'.format(vloss),\
 		'val_acc;','{0:.9f}'.format(vacc)
 	if epoch >= save_every and epoch%save_every == 0:
 		model.save_weights('m'+str(t.tm_mon)+'_d'+str(t.tm_mday)+'_h'\
