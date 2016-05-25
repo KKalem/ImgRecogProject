@@ -108,7 +108,7 @@ for epoch in range(num_epochs):
 	batches = 0
 	tloss, tacc = 0. , 0.
 	for X_batch, Y_batch in datagen.flow(X_train,Y_train, batch_size=num_batch):
-		print X_batch[0][0][0]
+#		print X_batch[0][0][0]
 		loss, acc = model.train_on_batch(X_batch,Y_batch)
 #		history = model.fit(X_batch, Y_batch, batch_size=len(X_batch), nb_epoch=1, verbose=0)
 #		loss = history.history['loss'][0]
@@ -120,7 +120,7 @@ for epoch in range(num_epochs):
 			break
 	tloss = tloss/batches
 	tacc = tacc/batches
-	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=0)
+	vloss, vacc = model.evaluate(X_val, Y_val, batch_size=num_batch, verbose=1)
 	vloss, vacc = model.evaluate_generator(datagen.flow(X_val, Y_val, batch_size=num_batch),\
 	val_samples = len(X_val))
 	end = time.time()
