@@ -28,7 +28,6 @@ def make_net(num_classes):
 	model.add(Convolution2D(64,3,3, init='glorot_uniform', activation='linear',\
 	border_mode='valid',dim_ordering='tf'))
 	
-	model.add(Maxpool())
 
 	model.add(Convolution2D(64,3,3, init='glorot_uniform', activation='relu',\
 	border_mode='same',dim_ordering='tf'))
@@ -39,7 +38,6 @@ def make_net(num_classes):
 	model.add(Convolution2D(128,3,3, init='glorot_uniform', activation='linear',\
 	border_mode='valid',dim_ordering='tf'))
 	
-	model.add(Maxpool())
 
 	model.add(Convolution2D(128,3,3, init='glorot_uniform', activation='relu',\
 	border_mode='same',dim_ordering='tf'))
