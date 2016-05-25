@@ -27,29 +27,33 @@ def make_net(num_classes):
 
 	model.add(Convolution2D(64,3,3, init='glorot_uniform', activation='linear',\
 	border_mode='valid',dim_ordering='tf'))
+	
+	model.add(Maxpool())
 
-	model.add(Convolution2D(64,3,3, init='glorot_normal', activation='relu',\
+	model.add(Convolution2D(64,3,3, init='glorot_uniform', activation='relu',\
 	border_mode='same',dim_ordering='tf'))
 
 	model.add(Maxpool())
-	model.add(Dropout(0.25))
+	#model.add(Dropout(0.25))
 
 	model.add(Convolution2D(128,3,3, init='glorot_uniform', activation='linear',\
 	border_mode='valid',dim_ordering='tf'))
+	
+	model.add(Maxpool())
 
-	model.add(Convolution2D(128,3,3, init='glorot_normal', activation='relu',\
+	model.add(Convolution2D(128,3,3, init='glorot_uniform', activation='relu',\
 	border_mode='same',dim_ordering='tf'))
 
 	model.add(Maxpool())
-	model.add(Dropout(0.25))
+	#model.add(Dropout(0.25))
 
 	model.add(Flatten())
 	model.add(Relu(128))
-	model.add(Dropout(0.5))
+	#model.add(Dropout(0.5))
 	model.add(Relu(128))
-	model.add(Dropout(0.5))
+	#model.add(Dropout(0.5))
 	model.add(Dense(num_classes, activation='softmax'))
 
-	optim = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+	optim = SGD(lr=0.2, decay=1e-6, momentum=0.9, nesterov=True)
 	model.compile(optim, loss='categorical_crossentropy', metrics=['accuracy'])
 	return model
