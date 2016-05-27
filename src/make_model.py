@@ -15,21 +15,21 @@ def make_net(num_classes):
 	model = Sequential()
 
 	model.add(ZeroPadding2D((2,2), input_shape = (64,64,3), dim_ordering = 'tf'))
-	model.add(Convolution2D(64,5,5, sumsample = (2,2),\
+	model.add(Convolution2D(64,5,5, subsample = (2,2),\
 	W_regularizer = WeightRegularizer(l1=1e-1,l2=1e-1),dim_ordering = 'tf'))
 	model.add(BatchNormalization(axis=1))
 	model.add(Activation('relu'))
 
 
 	model.add(ZeroPadding2D((1,1), dim_ordering = 'tf'))
-	model.add(Convolution2D(64,3,3, sumsample = (1,1),\
+	model.add(Convolution2D(64,3,3, subsample = (1,1),\
 	W_regularizer = WeightRegularizer(l1=1e-1,l2=1e-1), dim_ordering = 'tf'))
 	model.add(BatchNormalization(axis=1))
 	model.add(Activation('relu'))
 
 
 	model.add(ZeroPadding2D((1,1), dim_ordering = 'tf'))
-	model.add(Convolution2D(128,3,3, sumsample = (2,2), dim_ordering = 'tf'))
+	model.add(Convolution2D(128,3,3, subsample = (2,2), dim_ordering = 'tf'))
 	model.add(BatchNormalization(axis=1))
 	model.add(Activation('relu'))
 	model.add(Dropout(0.25))
