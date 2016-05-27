@@ -14,9 +14,9 @@ import time
 t = time.localtime()
 num_classes = 100
 num_samples = 500
-num_epochs = 120
-num_batch = 32
-save_every = 20
+num_epochs = 30
+num_batch = 128
+save_every = 10
 
 trainpath = '../tiny-imagenet-200/train/'
 label_names = os.listdir(trainpath)
@@ -75,17 +75,17 @@ Y_val = np.array(Y)
 del X
 del Y
 #%% generator to create rotated, shifted etc images for training
-#datagen = ImageDataGenerator(
-#	featurewise_center = False,
-#	featurewise_std_normalization = False,
-##	zca_whitening = False,
-##	fill_mode='constant',
-##	cval=0,
-##	rotation_range=5,
-#	width_shift_range=0.1,
-#	height_shift_range=0.1,
-#	horizontal_flip=False,
-#	dim_ordering='tf')
+datagen = ImageDataGenerator(
+	featurewise_center = False,
+	featurewise_std_normalization = False,
+	zca_whitening = False,
+	fill_mode='constant',
+	cval=0,
+	rotation_range=0,
+	width_shift_range=0.1,
+	height_shift_range=0.1,
+	horizontal_flip=True,
+	dim_ordering='tf')
 #
 #
 #print 'fitting datagen'
@@ -94,13 +94,13 @@ del Y
 print 'Training'
 model = make_net(num_classes)
 #%%
-history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
-nb_epoch=num_epochs, shuffle=True)
-model.save_weights('weights')
+#history = model.fit(X_train, Y_train, verbose=2, validation_data=(X_val, Y_val),
+#nb_epoch=num_epochs, shuffle=True)
 
-#model.fit_generator(datagen.flow(X_train, Y_train, batch_size=num_batch),
-#					samples_per_epoch=len(X_train), nb_epoch=num_epochs,
-#					validation_data=(X_val, Y_val))
+model.fit_generator(datagen.flow(X_train, Y_train, batch_size=num_batch),
+					samples_per_epoch=len(X_train), nb_epoch=num_epochs,
+					validation_data=(X_val, Y_val))
+model.save_weights('weights')
 
 #for epoch in range(num_epochs):
 #	print 'Epoch',str(epoch+1)+'/'+str(num_epochs)
