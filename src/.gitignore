@@ -8,3 +8,4 @@ tiny-imagenet-200
 *.csv
 *.odt
 *.hdf5
+*.h5
